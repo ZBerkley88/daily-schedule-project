@@ -1,38 +1,48 @@
-// test to see if the value was added to the element correctly
-// console.log(document.getElementById('hour-12').getAttribute('value'));
-
 var today = moment();
 
-// why isn't the time ticking on the webpage?
-$("#currentDay").text(today.format("MMMM Do YYYY, h:mm:ss a")); 
+// displays the time on the webpage, but why isn't it ticking?
+$("#currentDay").text(today.format("MMMM Do YYYY, h:mm a")); 
 
-// this function gets the current hour and returns it as a number between 0 and 23
-function checkTime() {
-    var today = new Date();
-    var currentTime = today.getHours();
-
-    return currentTime
-}
+// gets the current hour and returns it as a number between 0 and 23
+var today = new Date();
+var currentTime = today.getHours();
 
 
+$(".time-block").each(function () {
+    var blockTime = parseInt($(this).attr("id").split("-o-clock")[0]);
 
-function changeColor() {
-    for (var i = 0; i < 10; i++) {
-
-        // this console.logs the value of all IDs on the page
-        $("*").each(function() {
-            if (this.id) {
-                console.log(document.getElementById(this.id).getAttribute('value'));
-        
-            }
-
-        });
-    
+    if (blockTime < currentTime) {
+        $(this).removeClass("future");
+        $(this).removeClass("present");
+        $(this).addClass("past");
     }
+    else if (blockTime > currentTime) {
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+        $(this).addClass("future");
+    }
+    else {
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+        $(this).addClass("present");
+
+    }
+})
+// function changeColor() {
+//     var currentTime = checkTime();
+//     $( "div" ).each(function( index ) {
+//         console.log( index + ": " + $( this ).value() );
+//       });
+
+// }
+
+
+        
+
     // check to see if the container time is in the past, present, or future
     // apply a number value to each container
 
-}
+
 // depending on time, change container class to .past, .present, or .future
 
 // EXTRA maybe split each cell into entry/entered? 
