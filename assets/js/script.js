@@ -53,7 +53,7 @@ $(".time-block").each(function () {
 })
 
 // load data saved in localStorage
-$('#9-o-clock textarea').val(localStorage.getItem('9-o-clock'));
+$('#9-o-clock .description').val(localStorage.getItem('9-o-clock'));
 $('#10-o-clock .description').val(localStorage.getItem('10-o-clock'));
 $('#11-o-clock .description').val(localStorage.getItem('11-o-clock'));
 $('#12-o-clock .description').val(localStorage.getItem('12-o-clock'));
